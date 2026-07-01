@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog · The Party Guy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    :root {
+      --ink: #3a2a5c; --plum: #3a1f57; --plum-deep: #1e1330;
+      --violet: #6b21a8; --violet-bright: #8b3fd0;
+      --gold: #f97316; --cream: #fbf0e9; --muted: #7a6e93;
+      --display: 'Baloo 2', system-ui, sans-serif;
+      --body: 'Outfit', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--body); color: var(--ink); background: var(--cream); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAV */
+    header.nav { position: sticky; top: 0; z-index: 60; background: rgba(251,240,233,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(107,33,168,0.1); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1140px; margin: 0 auto; }
+    .logo img { height: 40px; }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a { color: var(--ink); font-size: 0.95rem; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--gold); }
+    .btn { display: inline-flex; align-items: center; font-weight: 600; font-size: 0.92rem; padding: 10px 20px; border-radius: 999px; cursor: pointer; border: none; transition: transform 0.18s, box-shadow 0.18s; white-space: nowrap; }
+    .btn-gold { background: var(--gold); color: var(--plum-deep); box-shadow: rgba(249,115,22,0.4) 0 8px 20px -8px; }
+    .btn-gold:hover { transform: translateY(-2px); }
+
+    /* HERO STRIP */
+    .blog-hero { background: var(--plum); padding: 64px 24px 52px; text-align: center; }
+    .blog-hero .eyebrow { font-family: var(--body); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .blog-hero h1 { font-family: var(--display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: #fff; line-height: 1.1; }
+    .blog-hero p { color: rgba(255,255,255,0.75); margin-top: 14px; font-size: 1.05rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+
+    /* GRID */
+    .blog-grid-wrap { max-width: 1100px; margin: 0 auto; padding: 56px 24px 80px; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 32px; }
+    .post-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 30px -12px rgba(58,31,87,0.18); transition: transform 0.2s, box-shadow 0.2s; }
+    .post-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px -12px rgba(58,31,87,0.28); }
+    .post-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .post-card-body { padding: 22px 24px 26px; }
+    .post-date { font-size: 0.8rem; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+    .post-card h2 { font-family: var(--display); font-size: 1.2rem; font-weight: 700; color: var(--plum); line-height: 1.25; }
+    .post-card h2:hover { color: var(--gold); }
+    .read-more { display: inline-block; margin-top: 14px; font-size: 0.88rem; font-weight: 600; color: var(--gold); }
+
+    /* EMPTY STATE */
+    .no-posts { text-align: center; padding: 60px 24px; color: var(--muted); font-size: 1rem; }
+
+    /* FOOTER */
+    footer { background: var(--plum-deep); color: rgba(255,255,255,0.7); text-align: center; padding: 32px 24px; font-size: 0.88rem; }
+    footer a { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo"><img src="/images/logo.png" alt="The Party Guy"></a>
+    <nav class="nav-links">
+      <a href="/#packages">Packages</a>
+      <a href="/#quest">D&D Parties</a>
+      <a href="/#beyond">Schools &amp; Groups</a>
+      <a href="/#about">About</a>
+      <a href="/#proof">Reviews</a>
+      <a href="/#contact" class="btn btn-gold">Check Availability</a>
+    </nav>
+  </div>
+</header>
+
+<section class="blog-hero">
+  <p class="eyebrow">Tips, ideas &amp; party inspiration</p>
+  <h1>The Party Guy Blog</h1>
+  <p>Party planning tips, entertainment ideas and inspiration for stress-free kids' celebrations.</p>
+</section>
+
+<div class="blog-grid-wrap">
+  <div class="blog-grid" id="post-grid">
+    <p class="no-posts">No posts yet — check back soon!</p>
+  </div>
+</div>
+
+<footer>
+  <p>&copy; 2026 Guy Samuels · <a href="/">The Party Guy</a> · <a href="mailto:hello@thepartyguy.co.uk">hello@thepartyguy.co.uk</a></p>
+</footer>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
+      }
+    });
+  }
+</script>
+
+</body>
+</html>
