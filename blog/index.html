@@ -87,10 +87,10 @@ var posts = [
     title: "10 Kids Party Themes Guaranteed to Get a Wow in 2026",
     date: "1 July 2026",
     slug: "2026-07-01-10-kids-party-themes-guaranteed-to-get-a-wow-in-2026",
+    image: "/blog/images/article1.jpg",
+    fallback: "/images/hero.jpg"
   }
-  var html = "";
-  for (var i = 0; i < posts.length; i++) {
-    var p = posts[i];
+];
     var img = p.image || p.fallback || "/images/hero.jpg";
     html += "<a class='post-card' href='/blog/posts/" + p.slug + ".html'>";
     html += "<img src='" + img + "' alt='" + p.title + "' onerror='this.src=" + '"' + (p.fallback || "/images/hero.jpg") + '"' + "'>";
