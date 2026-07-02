@@ -13,8 +13,6 @@
       --ink: #3a2a5c;
       --plum: #3a1f57;
       --plum-deep: #1e1330;
-      --violet: #6b21a8;
-      --violet-bright: #8b3fd0;
       --gold: #f97316;
       --cream: #fbf0e9;
       --muted: #7a6e93;
@@ -34,7 +32,7 @@
     .btn-gold { background: var(--gold); color: var(--plum-deep); box-shadow: 0 4px 14px rgba(249,115,22,0.4); }
     .btn-gold:hover { transform: translateY(-2px); }
     .blog-hero { background: var(--plum); padding: 60px 24px; text-align: center; }
-    .blog-hero .eyebrow { font-family: var(--body); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .blog-hero .eyebrow { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
     .blog-hero h1 { font-family: var(--display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: #fff; line-height: 1.1; }
     .blog-hero p { color: rgba(255,255,255,0.75); margin-top: 16px; font-size: 1.05rem; max-width: 520px; margin-left: auto; margin-right: auto; }
     .blog-grid-wrap { max-width: 1100px; margin: 60px auto; padding: 0 24px; }
@@ -70,7 +68,7 @@
 </header>
 
 <section class="blog-hero">
-  <p class="eyebrow">Tips, ideas &amp; party inspiration</p>
+  <p class="eyebrow">Tips, ideas and party inspiration</p>
   <h1>The Party Guy Blog</h1>
   <p>Party planning tips, entertainment ideas and inspiration for stress-free kids celebrations.</p>
 </section>
@@ -84,40 +82,35 @@
 </footer>
 
 <script>
-  const posts = [
-    {
-      title: "10 Kids Party Themes Guaranteed to Get a Wow in 2026",
-      date: "1 July 2026",
-      slug: "2026-07-01-10-kids-party-themes-guaranteed-to-get-a-wow-in-2026",
-      image: "/blog/images/article1.jpg",
-      fallbackImage: "/images/hero.jpg"
-    }
-  ];
-
-  const grid = document.getElementById('post-grid');
-
-  if (posts.length === 0) {
-    grid.innerHTML = '<p class="no-posts">No posts yet - check back soon!</p>';
-  } else {
-    posts.forEach(function(post) {
-      var imgSrc = post.image || post.fallbackImage || '/images/hero.jpg';
-      grid.innerHTML += '<a class="post-card" href="/blog/posts/' + post.slug + '.html">' +
-        '<img src="' + imgSrc + '" alt="' + post.title + '" onerror="this.src='' + (post.fallbackImage || '/images/hero.jpg') + ''">' +
-        '<div class="post-card-body">' +
-        '<p class="post-date">' + post.date + '</p>' +
-        '<h2>' + post.title + '</h2>' +
-        '<span class="read-more">Read more &rarr;</span>' +
-        '</div></a>';
-    });
+var posts = [
+  {
+    title: "10 Kids Party Themes Guaranteed to Get a Wow in 2026",
+    date: "1 July 2026",
+    slug: "2026-07-01-10-kids-party-themes-guaranteed-to-get-a-wow-in-2026",
+    image: "/blog/images/article1.jpg",
+    fallback: "/images/hero.jpg"
   }
+];
 
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", function(user) {
-      if (!user) {
-        window.netlifyIdentity.on("login", function() { document.location.href = "/admin/"; });
-      }
-    });
+var grid = document.getElementById("post-grid");
+if (!grid) { console.error("post-grid not found"); }
+else if (posts.length === 0) {
+  grid.innerHTML = "<p class='no-posts'>No posts yet - check back soon!</p>";
+} else {
+  var html = "";
+  for (var i = 0; i < posts.length; i++) {
+    var p = posts[i];
+    var img = p.image || p.fallback || "/images/hero.jpg";
+    html += "<a class='post-card' href='/blog/posts/" + p.slug + ".html'>";
+    html += "<img src='" + img + "' alt='" + p.title + "' onerror='this.src=" + '"' + (p.fallback || "/images/hero.jpg") + '"' + "'>";
+    html += "<div class='post-card-body'>";
+    html += "<p class='post-date'>" + p.date + "</p>";
+    html += "<h2>" + p.title + "</h2>";
+    html += "<span class='read-more'>Read more</span>";
+    html += "</div></a>";
   }
+  grid.innerHTML = html;
+}
 </script>
 
 </body>
