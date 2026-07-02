@@ -1,139 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Blog · The Party Guy</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <style>
-          :root {
-                  --ink: #3a2a5c; --plum: #3a1f57; --plum-deep: #1e1330;
-                  --violet: #6b21a8; --violet-bright: #8b3fd0;
-                  --gold: #f97316; --cream: #fbf0e9; --muted: #7a6e93;
-                  --display: 'Baloo 2', system-ui, sans-serif;
-                  --body: 'Outfit', system-ui, sans-serif;
-          }
-          *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-          body { font-family: var(--body); color: var(--ink); background: var(--cream); line-height: 1.6; -webkit-font-smoothing: antialiased; }
-          a { text-decoration: none; color: inherit; }
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - The Party Guy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700;800&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    :root {
+      --ink: #3a2a5c;
+      --plum: #3a1f57;
+      --plum-deep: #1e1330;
+      --violet: #6b21a8;
+      --violet-bright: #8b3fd0;
+      --gold: #f97316;
+      --cream: #fbf0e9;
+      --muted: #7a6e93;
+      --display: 'Baloo 2', system-ui, sans-serif;
+      --body: 'Outfit', system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--body); color: var(--ink); background: var(--cream); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: inherit; }
+    header.nav { position: sticky; top: 0; z-index: 60; background: rgba(251,240,233,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(107,33,168,0.1); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1140px; margin: 0 auto; }
+    .logo img { height: 40px; }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a { color: var(--ink); font-size: 0.95rem; font-weight: 500; transition: color 0.15s; }
+    .nav-links a:hover { color: var(--gold); }
+    .btn { display: inline-flex; align-items: center; font-weight: 600; font-size: 0.92rem; padding: 10px 20px; border-radius: 999px; cursor: pointer; border: none; transition: transform 0.18s, box-shadow 0.18s; white-space: nowrap; }
+    .btn-gold { background: var(--gold); color: var(--plum-deep); box-shadow: 0 4px 14px rgba(249,115,22,0.4); }
+    .btn-gold:hover { transform: translateY(-2px); }
+    .blog-hero { background: var(--plum); padding: 60px 24px; text-align: center; }
+    .blog-hero .eyebrow { font-family: var(--body); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+    .blog-hero h1 { font-family: var(--display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: #fff; line-height: 1.1; }
+    .blog-hero p { color: rgba(255,255,255,0.75); margin-top: 16px; font-size: 1.05rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .blog-grid-wrap { max-width: 1100px; margin: 60px auto; padding: 0 24px; }
+    .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; }
+    .post-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.18); transition: transform 0.2s, box-shadow 0.2s; }
+    .post-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
+    .post-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
+    .post-card-body { padding: 20px; }
+    .post-date { font-size: 0.8rem; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
+    .post-card h2 { font-family: var(--display); font-size: 1.2rem; font-weight: 700; color: var(--plum); line-height: 1.25; }
+    .post-card:hover h2 { color: var(--gold); }
+    .read-more { display: inline-block; margin-top: 12px; font-size: 0.88rem; font-weight: 600; color: var(--gold); }
+    .no-posts { text-align: center; padding: 60px 24px; color: var(--muted); font-size: 1.1rem; }
+    footer { background: var(--plum-deep); color: rgba(255,255,255,0.7); text-align: center; padding: 32px 24px; font-size: 0.88rem; }
+    footer a { color: var(--gold); }
+  </style>
+</head>
+<body>
 
-          /* NAV */
-          header.nav { position: sticky; top: 0; z-index: 60; background: rgba(251,240,233,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(107,33,168,0.1); }
-          .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; max-width: 1140px; margin: 0 auto; }
-          .logo img { height: 40px; }
-          .nav-links { display: flex; align-items: center; gap: 30px; }
-          .nav-links a { color: var(--ink); font-size: 0.95rem; font-weight: 500; transition: color 0.15s; }
-          .nav-links a:hover { color: var(--gold); }
-          .btn { display: inline-flex; align-items: center; font-weight: 600; font-size: 0.92rem; padding: 10px 20px; border-radius: 999px; cursor: pointer; border: none; transition: transform 0.18s, box-shadow 0.18s; white-space: nowrap; }
-          .btn-gold { background: var(--gold); color: var(--plum-deep); box-shadow: 0 4px 14px rgba(249,115,22,0.4); }
-          .btn-gold:hover { transform: translateY(-2px); }
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo"><img src="/images/logo.png" alt="The Party Guy"></a>
+    <nav class="nav-links">
+      <a href="/#packages">Packages</a>
+      <a href="/#quest">D&amp;D Parties</a>
+      <a href="/#beyond">Schools &amp; Groups</a>
+      <a href="/#about">About</a>
+      <a href="/#proof">Reviews</a>
+      <a href="/blog/">Blog</a>
+      <a href="/#contact" class="btn btn-gold">Check Availability</a>
+    </nav>
+  </div>
+</header>
 
-          /* HERO STRIP */
-          .blog-hero { background: var(--plum); padding: 60px 24px; text-align: center; }
-          .blog-hero .eyebrow { font-family: var(--body); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-          .blog-hero h1 { font-family: var(--display); font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: #fff; line-height: 1.1; }
-          .blog-hero p { color: rgba(255,255,255,0.75); margin-top: 16px; font-size: 1.05rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+<section class="blog-hero">
+  <p class="eyebrow">Tips, ideas &amp; party inspiration</p>
+  <h1>The Party Guy Blog</h1>
+  <p>Party planning tips, entertainment ideas and inspiration for stress-free kids celebrations.</p>
+</section>
 
-          /* GRID */
-          .blog-grid-wrap { max-width: 1100px; margin: 60px auto; padding: 0 24px; }
-          .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 28px; }
-          .post-card { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.18); transition: transform 0.2s, box-shadow 0.2s; }
-          .post-card:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
-          .post-card img { width: 100%; height: 200px; object-fit: cover; display: block; }
-          .post-card-body { padding: 20px; }
-          .post-date { font-size: 0.8rem; color: var(--muted); font-weight: 500; margin-bottom: 8px; }
-          .post-card h2 { font-family: var(--display); font-size: 1.2rem; font-weight: 700; color: var(--plum); line-height: 1.25; }
-          .post-card:hover h2 { color: var(--gold); }
-          .read-more { display: inline-block; margin-top: 12px; font-size: 0.88rem; font-weight: 600; color: var(--gold); }
+<div class="blog-grid-wrap">
+  <div class="blog-grid" id="post-grid"></div>
+</div>
 
-          /* EMPTY STATE */
-          .no-posts { text-align: center; padding: 60px 24px; color: var(--muted); font-size: 1.1rem; }
+<footer>
+  &copy; 2026 Guy Samuels &middot; <a href="/">The Party Guy</a> &middot; <a href="mailto:hello@thepartyguy.co.uk">hello@thepartyguy.co.uk</a>
+</footer>
 
-          /* FOOTER */
-          footer { background: var(--plum-deep); color: rgba(255,255,255,0.7); text-align: center; padding: 32px 24px; font-size: 0.88rem; }
-          footer a { color: var(--gold); }
-        </style>
-  </head>
-  <body>
+<script>
+  const posts = [
+    {
+      title: "10 Kids Party Themes Guaranteed to Get a Wow in 2026",
+      date: "1 July 2026",
+      slug: "2026-07-01-10-kids-party-themes-guaranteed-to-get-a-wow-in-2026",
+      image: "/blog/images/article1.jpg",
+      fallbackImage: "/images/hero.jpg"
+    }
+  ];
 
-    <header class="nav">
-        <div class="nav-inner">
-              <a href="/" class="logo"><img src="/images/logo.png" alt="The Party Guy"></a>a>
-              <nav class="nav-links">
-                      <a href="/#packages">Packages</a>a>
-                      <a href="/#quest">D&D Parties</a>a>
-                      <a href="/#beyond">Schools &amp; Groups</a>a>
-                      <a href="/#about">About</a>a>
-                      <a href="/#proof">Reviews</a>a>
-                      <a href="/blog/">Blog</a>a>
-                      <a href="/#contact" class="btn btn-gold">Check Availability</a>a>
-              </nav>nav>
-        </div>div>
-    </header>header>
+  const grid = document.getElementById('post-grid');
 
-    <section class="blog-hero">
-        <p class="eyebrow">Tips, ideas &amp; party inspiration</p>p>
-        <h1>The Party Guy Blog</h1>
-      <p>Party planning tips, entertainment ideas and inspiration for stress-free kids' celebrations.</p>
-    </section>section>
-  
-  <div class="blog-grid-wrap">
-    <div class="blog-grid" id="post-grid"></div>div>
-  </div>div>
-  
-  <footer>
-      &copy; 2026 Guy Samuels &middot; <a href="/">The Party Guy</a>a> &middot; <a href="mailto:hello@thepartyguy.co.uk">hello@thepartyguy.co.uk</a>a>
-  </footer>
+  if (posts.length === 0) {
+    grid.innerHTML = '<p class="no-posts">No posts yet - check back soon!</p>';
+  } else {
+    posts.forEach(function(post) {
+      var imgSrc = post.image || post.fallbackImage || '/images/hero.jpg';
+      grid.innerHTML += '<a class="post-card" href="/blog/posts/' + post.slug + '.html">' +
+        '<img src="' + imgSrc + '" alt="' + post.title + '" onerror="this.src='' + (post.fallbackImage || '/images/hero.jpg') + ''">' +
+        '<div class="post-card-body">' +
+        '<p class="post-date">' + post.date + '</p>' +
+        '<h2>' + post.title + '</h2>' +
+        '<span class="read-more">Read more &rarr;</span>' +
+        '</div></a>';
+    });
+  }
 
-    <script>
-        // Add each blog post here. Copy and paste a new block for every article you publish.
-        const posts = [
-          {
-                  title: "10 Kids Party Themes Guaranteed to Get a Wow in 2026",
-                  date: "1 July 2026",
-                  slug: "2026-07-01-10-kids-party-themes-guaranteed-to-get-a-wow-in-2026",
-                  image: "/blog/images/article1.jpg",
-                  fallbackImage: "/images/hero.jpg"
-          }
-            ];
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", function(user) {
+      if (!user) {
+        window.netlifyIdentity.on("login", function() { document.location.href = "/admin/"; });
+      }
+    });
+  }
+</script>
 
-        const grid = document.getElementById('post-grid');
-
-        if (posts.length === 0) {
-              grid.innerHTML = '<p class="no-posts">No posts yet — check back soon!</p>';
-        } else {
-              posts.forEach(function(post) {
-                      var imgSrc = post.image || post.fallbackImage || '/images/hero.jpg';
-                      grid.innerHTML += `
-                              <a class="post-card" href="/blog/posts/${post.slug}.html">
-                                        <img src="${imgSrc}" alt="${post.title}" onerror="this.src='${post.fallbackImage || '/images/hero.jpg'}'">
-                                                  <div class="post-card-body">
-                                                              <p class="post-date">${post.date}</p>
-                                                                          <h2>${post.title}</h2>
-                                                                                      <span class="read-more">Read more &rarr;</span>
-                                                                                                </div>
-                                                                                                        </a>
-                                                                                                              `;
-              });
-        }
-
-        // Netlify Identity redirect
-        if (window.netlifyIdentity) {
-              window.netlifyIdentity.on("init", user => {
-                      if (!user) {
-                                window.netlifyIdentity.on("login", () => { document.location.href = "/admin/"; });
-                      }
-              });
-        }
-          </script>
-
-  </body>
-</html>html>
-    </script>
-  </footer></p></h1>
-  </body>
-    </style></title>
-  </head>
+</body>
+</html>
