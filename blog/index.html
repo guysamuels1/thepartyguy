@@ -87,23 +87,7 @@ var posts = [
     title: "10 Kids Party Themes Guaranteed to Get a Wow in 2026",
     date: "1 July 2026",
     slug: "2026-07-01-10-kids-party-themes-guaranteed-to-get-a-wow-in-2026",
-    image: "/blog/images/article1.jpg",
-    fallback: "/images/hero.jpg"
-  },
-  {
-    title: "test",
-    date: "2 July 2026",
-    slug: "2026-07-02-test",
-    image: "/blog/images/article1.jpg",
-    fallback: "/images/hero.jpg"
   }
-];
-
-var grid = document.getElementById("post-grid");
-if (!grid) { console.error("post-grid not found"); }
-else if (posts.length === 0) {
-  grid.innerHTML = "<p class='no-posts'>No posts yet - check back soon!</p>";
-} else {
   var html = "";
   for (var i = 0; i < posts.length; i++) {
     var p = posts[i];
