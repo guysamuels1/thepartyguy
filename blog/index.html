@@ -91,17 +91,20 @@ var posts = [
     fallback: "/images/hero.jpg"
   }
 ];
-    var img = p.image || p.fallback || "/images/hero.jpg";
-    html += "<a class='post-card' href='/blog/posts/" + p.slug + ".html'>";
-    html += "<img src='" + img + "' alt='" + p.title + "' onerror='this.src=" + '"' + (p.fallback || "/images/hero.jpg") + '"' + "'>";
-    html += "<div class='post-card-body'>";
-    html += "<p class='post-date'>" + p.date + "</p>";
-    html += "<h2>" + p.title + "</h2>";
-    html += "<span class='read-more'>Read more</span>";
-    html += "</div></a>";
-  }
-  grid.innerHTML = html;
+var grid = document.getElementById("post-grid");
+var html = "";
+for (var i = 0; i < posts.length; i++) {
+  var p = posts[i];
+  var img = p.image || p.fallback || "/images/hero.jpg";
+  html += "<a class='post-card' href='/blog/posts/" + p.slug + ".html'>";
+  html += "<img src='" + img + "' alt='" + p.title + "' onerror='this.src=" + '"'  + (p.fallback || "/images/hero.jpg") + '"' + "'>";
+  html += "<div class='post-card-body'>";
+  html += "<p class='post-date'>" + p.date + "<\/p>";
+  html += "<h2>" + p.title + "<\/h2>";
+  html += "<span class='read-more'>Read more<\/span>";
+  html += "<\/div><\/a>";
 }
+grid.innerHTML = html;
 </script>
 
 </body>
